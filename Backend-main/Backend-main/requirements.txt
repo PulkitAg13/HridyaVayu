@@ -1,0 +1,5 @@
+﻿Flask
+Flask-SQLAlchemy
+Flask-Cors
+gunicorn==23.0.0
+requests  
