@@ -53,7 +53,7 @@ with app.app_context():
         for quiz in quiz_responses:
             print(f"ID: {quiz.id}, User ID: {quiz.user_id}, Question: {quiz.question}, Answer: {quiz.answer}")
 
-        print("\n=================== INHALER USAGE ====================")
+        print("\n=================== INHALER USAGE =====================")
         inhaler_usage = get_all_inhaler_usage()
         for usage in inhaler_usage:
             print(f"ID: {usage.id}, User ID: {usage.user_id}, Usage Count: {usage.usage_count}")
