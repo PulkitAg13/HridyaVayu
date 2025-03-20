@@ -98,6 +98,31 @@ def upload_sensor_data():
         "temperature": temperature  # ✅ From OpenWeatherMap
     }), 201
 
+@routes.route("/get-sensor-data/<int:user_id>", methods=["GET"])
+def get_sensor_data(user_id):
+    """Fetches the latest sensor data for a given user."""
+    
+    # Fetch the most recent sensor data entry for the user
+    latest_sensor_data = SensorData.query.filter_by(user_id=user_id).order_by(SensorData.timestamp.desc()).first()
+
+    if not latest_sensor_data:
+        return jsonify({"error": "No sensor data found for the user"}), 404
+
+    # Format the data
+    sensor_data = {
+        "user_id": latest_sensor_data.user_id,
+        "timestamp": latest_sensor_data.timestamp.strftime("%Y-%m-%d %H:%M:%S"),
+        "air_quality": latest_sensor_data.air_quality,
+        "pm25": latest_sensor_data.pm25,
+        "so2_level": latest_sensor_data.so2_level,
+        "no2_level": latest_sensor_data.no2_level,
+        "co2_level": latest_sensor_data.co2_level,
+        "humidity": latest_sensor_data.humidity,
+        "temperature": latest_sensor_data.temperature,
+    }
+
+    return jsonify(sensor_data), 200
+
 # ---------------------- ALERT ROUTES ----------------------
 @routes.route("/get-alerts/<int:user_id>", methods=["GET"])
 def get_alerts(user_id):
