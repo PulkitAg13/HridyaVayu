@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { WiDayCloudy } from "react-icons/wi";
 import { IoHome, IoNotifications, IoSettings } from "react-icons/io5";
-import { MdOutlineAlarm } from "react-icons/md";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { AiOutlineEnvironment } from "react-icons/ai";
+import { AiFillProfile } from "react-icons/ai";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [weather, setWeather] = useState({
-    temp: "28.3",
-    humidity: "53.9",
-    pollen: "low",
-    aqi: "--",
-  });
-  const [inhalerData, setInhalerData] = useState({
-    puffsLeft: "--",
-    puffsToday: "--",
-    lastPuffTime: "--",
-  });
+  
+  
   const [deviceConnected, setDeviceConnected] = useState(false);
   const [loading, setLoading] = useState(false);
   const [alerts, setAlerts] = useState([]); // State to store alerts
@@ -131,7 +123,7 @@ const uploadSensorData = async () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <h1 className="text-lg font-bold text-gray-700">
-          VIT Bhopal University
+          Dashboard
         </h1>
         <button
           onClick={() => navigate("/profile")}
@@ -141,42 +133,10 @@ const uploadSensorData = async () => {
         </button>
       </div>
 
-      {/* Weather Card */}
-      <div className="bg-white p-4 rounded-xl shadow-md mt-4">
-        <h2 className="text-lg font-semibold text-indigo-600">My Location</h2>
-        <div className="flex justify-between items-center">
-          <p className="text-4xl font-bold">{weather.temp}°C</p>
-          <div className="flex items-center gap-2">
-            <WiDayCloudy className="text-3xl text-indigo-600" />
-            <span className="text-sm text-gray-600">Partly Cloudy</span>
-          </div>
-        </div>
-        <p className="text-sm text-gray-500">
-          Humidity: {weather.humidity}% | AQI: {weather.aqi}
-        </p>
-      </div>
-
-      {/* Connectivity Status */}
-      <div
-        className={`mt-2 text-sm font-semibold ${
-          deviceConnected ? "text-green-600" : "text-red-500"
-        }`}
-      >
-        Connectivity Status:{" "}
-        {deviceConnected ? "Device Connected" : "Device Disconnected"}
-      </div>
-
-      {/* Inhaler Card */}
-      <div className="bg-indigo-500 p-6 rounded-xl shadow-md mt-4 text-white">
-        <h2 className="text-lg font-semibold">My Inhaler</h2>
-        <p className="text-5xl font-bold">{inhalerData.puffsLeft}</p>
-        <p className="text-sm">left of 200 puffs</p>
-      </div>
-
       {/* upload sensor data button  */}
       <button
       onClick={uploadSensorData}
-      className="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg text-lg shadow-md hover:bg-blue-700 transition"
+      className="mt-75 w-full bg-blue-600 text-white py-3 rounded-lg text-lg shadow-md hover:bg-blue-700 transition"
     >
       Upload Environment Data
     </button>
@@ -227,24 +187,22 @@ const uploadSensorData = async () => {
         <button onClick={() => navigate("/")}>
           <IoHome className="text-2xl text-gray-600" />
         </button>
-        <button
-        // onClick={() => navigate("/alerts")}
-        >
-          <IoNotifications className="text-2xl text-gray-600" />
-        </button>
-        <button
-          onClick={() => navigate("/sos")}
-          className="bg-red-500 p-4 rounded-full text-white font-bold"
-        >
-          SOS
-        </button>
         <button onClick={() => navigate("/reminder")}>
-          <MdOutlineAlarm className="text-2xl text-gray-600" />
+          <FaRegCircleUser className="text-2xl text-gray-600"/>
         </button>
         <button
-        // onClick={() => navigate("/settings")}
+          onClick={() => navigate("/sensor-data")}
+          
         >
-          <IoSettings className="text-2xl text-gray-600" />
+         <AiFillProfile className="text-2xl text-gray-700" />
+        </button>
+        {/* {/* <button onClick={() => navigate("/reminder")}>
+          <MdOutlineAlarm className="text-2xl text-gray-600" />
+        </button> */}
+        <button
+        onClick={() => navigate("/settings")}
+        > 
+          <AiOutlineEnvironment className="text-2xl text-gray-600" />
         </button>
       </div>
     </div>
