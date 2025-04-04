@@ -116,7 +116,7 @@ r2 = r2_score(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
 
 print(f"\nFinal Model Metrics:")
-print(f"R² Score: {r2:.4f}")
+print(f"R² Score: {(r2):.4f}")
 print(f"MAE: {mae:.4f}")
 
 # Save model and preprocessing objects

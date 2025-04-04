@@ -56,7 +56,11 @@ def predict():
         # df["Log_CO2"] = np.log1p(df["CO2 level"])
         # df["Log_SO2"] = np.log1p(df["SO2 level"])
         # ✅ Add Missing Feature Used in Training
-        df["AQI_PM_Ratio"] = df["AQI"] / (df["PM2.5"] + 1)  # Prevents division by zero
+        df["AQI_PM_Ratio"] = df["AQI"] / (df["PM2.5"] + 1e-3)
+        df["toxicity"] = df["PM2.5"] + df["SO2 level"] + df["NO2 level"] + df["CO2 level"]
+        df["humidity_temp_ratio"] = df["Humidity"] / (df["Temperature"] + 1e-3)
+        df["pollution_ratio"] = df["PM2.5"] / (df["CO2 level"] + 1e-3)
+        df["temp_squared"] = df["Temperature"] ** 2
 
         # Preprocess categorical & numerical data
         categorical_features = [
