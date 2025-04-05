@@ -5,7 +5,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app import db, create_app  # Import db and Flask app factory
-from app.models import User, SensorData, Alert, QuizResponse, InhalerUsage
+from app.models import User, SensorData, Alert, QuizResponse
 
 # Create Flask app instance
 app = create_app()
@@ -23,9 +23,6 @@ with app.app_context():
 
     def get_all_quiz_responses():
         return QuizResponse.query.all()
-    
-    def get_all_inhaler_usage():
-        return InhalerUsage.query.all()
 
     # Function to fetch and print all data
     def fetch_all_data():
@@ -52,11 +49,6 @@ with app.app_context():
         quiz_responses = get_all_quiz_responses()
         for quiz in quiz_responses:
             print(f"ID: {quiz.id}, User ID: {quiz.user_id}, Question: {quiz.question}, Answer: {quiz.answer}")
-
-        print("\n=================== INHALER USAGE =====================")
-        inhaler_usage = get_all_inhaler_usage()
-        for usage in inhaler_usage:
-            print(f"ID: {usage.id}, User ID: {usage.user_id}, Usage Count: {usage.usage_count}")
 
     if __name__ == "__main__":
         fetch_all_data()
