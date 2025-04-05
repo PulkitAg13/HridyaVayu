@@ -186,36 +186,6 @@ def get_user(id):
 
 # ---------------------- INHALER USAGE ROUTES ----------------------
 
-
-@routes.route("/use-inhaler", methods=["POST"])
-def use_inhaler():
-    """Increments the inhaler usage counter each time it's used."""
-    data = request.json
-    user_id = data.get("user_id")
-
-    if not user_id:
-        return jsonify({"error": "User ID is required"}), 400
-
-    inhaler_usage = InhalerUsage.query.filter_by(user_id=user_id).first()
-
-    if inhaler_usage:
-        inhaler_usage.usage_count += 1
-    else:
-        inhaler_usage = InhalerUsage(user_id=user_id, usage_count=1)
-        db.session.add(inhaler_usage)
-
-    db.session.commit()
-    return (
-        jsonify(
-            {
-                "message": "Inhaler usage recorded",
-                "usage_count": inhaler_usage.usage_count,
-            }
-        ),
-        200,
-    )
-
-
 # ---------------------- SUBMIT & RETRIEVE QUIZ RESPONSES ----------------------
 @routes.route("/submit-quiz", methods=["POST"])
 def submit_quiz():
