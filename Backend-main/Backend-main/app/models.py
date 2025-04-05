@@ -26,11 +26,6 @@ class SensorData(db.Model):
     humidity = db.Column(db.Float, nullable=False)  # Humidity
     temperature = db.Column(db.Float, nullable=False)  # Temperature
 
-class InhalerUsage(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False, unique=True)
-    usage_count = db.Column(db.Integer, default=0, nullable=False)
-
 class Alert(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
