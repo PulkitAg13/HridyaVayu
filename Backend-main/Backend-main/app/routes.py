@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from .models import db, User, SensorData, Alert, QuizResponse, InhalerUsage
+from .models import db, User, SensorData, Alert, QuizResponse
 from datetime import datetime
 import requests
 from flask_cors import CORS
