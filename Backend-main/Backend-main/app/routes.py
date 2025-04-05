@@ -184,8 +184,6 @@ def get_user(id):
     return jsonify(user_data)
 
 
-# ---------------------- INHALER USAGE ROUTES ----------------------
-
 # ---------------------- SUBMIT & RETRIEVE QUIZ RESPONSES ----------------------
 @routes.route("/submit-quiz", methods=["POST"])
 def submit_quiz():
@@ -234,8 +232,7 @@ def get_quiz_responses(user_id):
 
 # ---------------------- AI INTEGRATION ROUTE ----------------------
 # AI Model URL
-# AI_MODEL_URL = "https://ml-model-aasthma-pio6.onrender.com/predict"
-# AI_MODEL_URL = "https://ai-ml-model.onrender.com/predict"
+
 AI_MODEL_URL = "http://127.0.0.1:7860/predict"
 
 
