@@ -216,17 +216,6 @@ def use_inhaler():
     )
 
 
-@routes.route("/get-inhaler-usage/<int:user_id>", methods=["GET"])
-def get_inhaler_usage(user_id):
-    """Fetches the current inhaler usage count for the user."""
-    inhaler_usage = InhalerUsage.query.filter_by(user_id=user_id).first()
-
-    if not inhaler_usage:
-        return jsonify({"error": "No inhaler usage data found for the user"}), 404
-
-    return jsonify({"user_id": user_id, "usage_count": inhaler_usage.usage_count}), 200
-
-
 # ---------------------- SUBMIT & RETRIEVE QUIZ RESPONSES ----------------------
 @routes.route("/submit-quiz", methods=["POST"])
 def submit_quiz():
