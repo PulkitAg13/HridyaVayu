@@ -9,7 +9,6 @@ import Signup from "./components/SignUp";
 import Profile from "./components/Profile";
 import Quiz from "./components/Quiz";
 import Dashboard from "./components/Dashboard";
-import Reminder from "./components/Reminder.jsx";
 import SensorData from "./components/SensorData.jsx";
 import FindMyDevice from "./components/FindMyDevice.jsx";
 import UserProfile from "./components/UserProfile.jsx";
