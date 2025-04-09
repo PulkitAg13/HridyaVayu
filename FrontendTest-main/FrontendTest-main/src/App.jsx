@@ -29,7 +29,6 @@ function App() {
       {/* Other routes */}
       <Route path="/quiz" element={<Quiz />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/reminder" element={<Reminder />} />
       <Route path="/sensor-data" element={<SensorData />} />
       <Route path="/find-my-device" element={<FindMyDevice />} />
       <Route path="/user-profile" element={<UserProfile />} />
