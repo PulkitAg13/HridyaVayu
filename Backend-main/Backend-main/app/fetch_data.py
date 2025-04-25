@@ -33,7 +33,7 @@ with app.app_context():
                   f"Phone: {user.phone_no}, Medical History: {user.medical_history}, "
                   f"Emergency Contact: {user.emergency_contact_name} ({user.emergency_contact_phone})")
 
-        print("\n===================== SENSOR DATA =====================")
+        print("\n===================== ENVIRONMENTAL DATA =====================")
         sensor_data = get_all_sensor_data()
         for data in sensor_data:
             print(f"ID: {data.id}, User ID: {data.user_id}, Timestamp: {data.timestamp}, AQI: {data.air_quality}, "
